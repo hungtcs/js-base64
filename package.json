@@ -11,13 +11,22 @@
     "base64.d.ts"
   ],
   "scripts": {
+    "test": "mocha",
     "build": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --mode=development --devtool=source-map",
-    "build:prod": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --mode=production"
+    "prebuild:prod": "npm test",
+    "build:prod": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --mode=production",
+    "prepublish": "npm run build:prod"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.4",
     "@types/node": "^14.14.9",
+    "chai": "^4.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
+    "jsdom": "16.4.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^8.2.1",
     "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "typescript": "^3.9.7",

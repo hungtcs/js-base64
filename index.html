@@ -5,13 +5,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS Base64</title>
+  <style>
+    html, body {
+      margin: 0px;
+      padding: 0px;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #content {
+      height: 61.8%;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    #content > section {
+      height: 100%;
+      display: flex;
+      padding: 0px 1rem;
+      flex-flow: column;
+      box-sizing: border-box;
+      justify-content: center;
+    }
+    #content > textarea {
+      flex: 1 1 auto;
+      height: 100%;
+      resize: none;
+      padding: 1rem;
+      box-sizing: border-box;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
+  <div id="content">
+    <textarea name="plain">你好！</textarea>
+    <section>
+      <button onclick="encode();">Encode &gt;&gt;</button> &nbsp;
+      <button onclick="decode();">&lt;&lt; Decode</button> &nbsp;
+      <button onclick="clearBoth();">Clear Both</button>
+    </section>
+    <textarea name="base64">5L2g5aW977yB</textarea>
+  </div>
   <script src="./dist/base64.js"></script>
   <script>
-    console.log(Base64.decode(Base64.encode('Hello!')));;
-    console.log(Base64.decode(Base64.encode('你好')));;
-    console.log(Base64.decode(Base64.encode('！@#￥%……&×（）——+“')));;
+    window.encode = function() {
+      const plain = document.querySelector('textarea[name="plain"]').value;
+      document.querySelector('textarea[name="base64"]').value = Base64.encode(plain);
+    };
+    window.decode = function() {
+      const base64 = document.querySelector('textarea[name="base64"]').value;
+      document.querySelector('textarea[name="plain"]').value = Base64.decode(base64);
+    };
+    window.clearBoth = function() {
+      document.querySelector('textarea[name="base64"]').value = '';
+      document.querySelector('textarea[name="plain"]').value = '';
+    };
   </script>
 </body>
 </html>

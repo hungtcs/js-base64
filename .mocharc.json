@@ -1,0 +1,8 @@
+{
+  "extension": ["ts"],
+  "spec": "test/**/*.spec.ts",
+  "require": [
+    "jsdom-global/register",
+    "ts-node/register"
+  ]
+}
