@@ -2,22 +2,27 @@
   "name": "js-base64",
   "version": "3.6.0",
   "description": "Yet another Base64 transcoder in pure-JS",
-  "main": "base64.js",
+  "main": "dist/base64.js",
   "module": "base64.mjs",
-  "types": "base64.d.ts",
+  "types": "dist/base64.d.ts",
   "files": [
     "base64.js",
     "base64.mjs",
     "base64.d.ts"
   ],
   "scripts": {
-    "test": "make clean && make test"
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --mode=development --devtool=source-map",
+    "build:prod": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --mode=production"
   },
   "devDependencies": {
+    "@types/node": "^14.14.9",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "ts-loader": "^8.0.11",
+    "ts-node": "^9.0.0",
     "typescript": "^3.9.7",
-    "@types/node": "^14.0.26",
-    "esm": "^3.2.25",
-    "mocha": "^8.0.0"
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
   },
   "repository": "git+https://github.com/dankogai/js-base64.git",
   "keywords": [
